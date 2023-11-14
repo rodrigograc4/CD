@@ -1,0 +1,18 @@
+O protocolo é identico com o fornecido no primeiro projeto do CLient-Server.
+Tal como referido no enunciado este inclui:
+    ● Mensagem de Subscrição de um tópico - Subscribe(Message)
+    ● Mensagem de Publicação num tópico - Publish(Message)
+    ● Mensagem de Pedido de Listagem de tópicos - RequestAllTopic(Message)
+    ● Mensagem de Cancelamento de Subscrição de um tópico - CancelTopic(Message)
+
+Cada tipo de mensagem contêm a tradução para os diferentes tipos de serialização: json, xml e pickle
+
+A função send_msg para alêm da socket e da mensagem e recebe como argumento o tipo de serialização:
+    ● Primeiramente, enviamos para uma mensagem com informação deste tipo de serialização (1 byte).
+    ● Seguidamente, tomando em consideração o tipo de serialização da mensagem a ser enviada enviamos um header (2 bytes) com o tamanha da mensagem original.
+    ● Consecutivamente, enviamos a respetiva mensagem conhecendo o tamanho da mensagem.
+
+A função recv_msg:
+    ● Primeiramente, vai receber a mensagem com a o tipo de serialização e o header.
+    ● Seguidamente, se tudo estiver dentro das normas vamos receber as mensagens dependentemente do tipo de serialização
+    ● Por fim, tendo a mensagens recebida vamos analizar qual o tipo de mensagens e retornar a determinada mensagem com os valores recebidos
