@@ -1,2 +1,2 @@
 # CD
-Classes and Project
+Practical Classes and Project
